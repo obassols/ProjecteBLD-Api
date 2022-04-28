@@ -12,6 +12,6 @@ namespace ProjecteBLD.Model
         [Column(TypeName = "varchar(20)")]
         public string password { get; set; }
         [Column(TypeName = "varchar(40)")]
-        public string email { get; set; }
+        public string? email { get; set; }
     }
 }
