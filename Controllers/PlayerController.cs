@@ -16,6 +16,7 @@ public class PlayerController : Controller
     {
         try
         {
+            Console.WriteLine("[SERVER] GetPlayer was Succesful");
             return Ok(context.Players.ToList());
         }
         catch (Exception e)
@@ -32,9 +33,11 @@ public class PlayerController : Controller
         {
             var p = context.Players.SingleOrDefault(p => p.username == player.username && p.password == player.password);
             if (p != null) {
+                Console.WriteLine("[SERVER] LoginPlayer was Succesful");
                 return Ok(p);
             }
             else {
+                Console.WriteLine("[SERVER] LoginPlayer did not find the player");
                 return StatusCode(StatusCodes.Status404NotFound);
             }
         }
@@ -56,6 +59,7 @@ public class PlayerController : Controller
             p.email = player.email;
             context.Players.Add(p);
             await context.SaveChangesAsync();
+            Console.WriteLine("[SERVER] AddPlayer was Succesful");
             return Ok(p);
         }
         catch (Exception e)
@@ -66,7 +70,7 @@ public class PlayerController : Controller
 
     [HttpPost]
     [Route("delete")]
-    public async Task<ActionResult> deletePlayer([FromBody] Player player)
+    public async Task<ActionResult> DeletePlayer([FromBody] Player player)
     {
         try
         {
@@ -74,6 +78,7 @@ public class PlayerController : Controller
             if (p != null) {
                 context.Players.Remove(p);
                 await context.SaveChangesAsync();
+                Console.WriteLine("[SERVER] DeletePlayer was Succesful");
                 return Ok(p);
             } else {
                 return StatusCode(StatusCodes.Status404NotFound);
