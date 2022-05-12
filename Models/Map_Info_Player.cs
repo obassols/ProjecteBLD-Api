@@ -8,7 +8,12 @@ namespace ProjecteBLD.Model
     {
         public bool completed { get; set; }
         public int time { get; set; }
-        public Map_Info mapInfo { get; set; }
-        public Player player {get; set; }
+
+        //FK
+        public string mapInfoFK { get; set; }
+        public string playerFK { get; set; }
+
+        public virtual Map_Info mapInfo { get; set; }
+        public virtual Player player {get; set; }
     }
 }

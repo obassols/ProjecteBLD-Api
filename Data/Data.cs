@@ -11,6 +11,18 @@ namespace ProjecteBLD.Data
         
         protected override void OnModelCreating(ModelBuilder mdb)
         {
+            mdb.Entity<Map_Info_Player>()
+                .HasOne(m => m.mapInfo)
+                .WithMany(p => p.players)
+                .HasForeignKey(e => e.mapInfoFK);
+
+            mdb.Entity<Map_Info_Player>()
+                            .HasOne(p => p.player)
+                            .WithMany(m => m.maps)
+                            .HasForeignKey(e => e.playerFK);
+
+            mdb.Entity<Map_Info_Player>()
+                .HasKey(e => new { e.playerFK, e.mapInfoFK});
             /*
             mdb.Entity<Gestiona>()
             .HasKey(e => new { e.TreballadorFK, e.HotelFK, e.DataInici });
