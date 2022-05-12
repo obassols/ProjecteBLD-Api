@@ -13,5 +13,6 @@ namespace ProjecteBLD.Model
         public string password { get; set; }
         [Column(TypeName = "varchar(40)")]
         public string? email { get; set; }
+        public ICollection<Map_Info_Player>? maps { get; set; }
     }
 }

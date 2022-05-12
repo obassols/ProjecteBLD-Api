@@ -7,6 +7,8 @@ namespace ProjecteBLD.Data
     {
         public DbSet<Player> Players { get; set; }
         public DbSet<Map_Info> Maps_Info { get; set; }
+        public DbSet<Map_Info_Player> Maps_Info_Player { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder mdb)
         {
             /*
