@@ -38,12 +38,17 @@ public class MapInfoPlayerController : Controller
             if (p != null && m != null) {
                 mip.player = p;
                 mip.mapInfo = m;
-                mip.completed = false;
-                mip.time = -1;
-                context.Maps_Info_Player.Add(mip);
-                await context.SaveChangesAsync();
-                Console.WriteLine("[SERVER] StartMap was Succesful");
-                return Ok(mip);
+                var a = context.Maps_Info_Player.SingleOrDefault(a => a.mapInfoFK == mip.mapInfo.id && a.playerFK == mip.player.username);
+                if (a == null) {
+                    mip.completed = false;
+                    mip.time = -1;
+                    context.Maps_Info_Player.Add(mip);
+                    await context.SaveChangesAsync();
+                    Console.WriteLine("[SERVER] StartMap was Succesful");
+                    return Ok(mip);
+                } else {
+                    return StatusCode(StatusCodes.Status409Conflict);
+                }
             } else {
                 return StatusCode(StatusCodes.Status404NotFound);
             }
@@ -55,7 +60,7 @@ public class MapInfoPlayerController : Controller
     }
 
     [HttpPost]
-    [Route("CompleteMap")]
+    [Route("completeMap")]
     public async Task<ActionResult> ResetMap([FromBody] Map_Info_Player mapInfoPlayer)
     {
         try

@@ -15,6 +15,6 @@ namespace ProjecteBLD.Model
         public byte[] icon { get; set; }
         public Player author { get; set; }
         public Map? map { get; set; }
-        public ICollection<Map_Info_Player> players { get; set; }
+        public ICollection<Map_Info_Player>? players { get; set; }
     }
 }
