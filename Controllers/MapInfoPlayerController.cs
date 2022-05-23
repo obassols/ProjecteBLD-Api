@@ -32,8 +32,8 @@ public class MapInfoPlayerController : Controller
         try
         {
             Map_Info_Player mip = new Map_Info_Player();
-            Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.player.username);
-            Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfo.id);
+            Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.playerFK);
+            Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfoFK);
 
             if (p != null && m != null) {
                 mip.player = p;
