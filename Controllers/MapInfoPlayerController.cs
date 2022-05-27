@@ -66,7 +66,7 @@ public class MapInfoPlayerController : Controller
     public async Task<ActionResult> CompleteMap([FromBody] Map_Info_Player mapInfoPlayer)
     {
         Console.WriteLine("Hola");
-        return null;
+        return Ok();
         // try
         // {
         //     Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.player.username);
