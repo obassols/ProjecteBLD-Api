@@ -65,34 +65,35 @@ public class MapInfoPlayerController : Controller
     [Route("completeMap")]
     public async Task<ActionResult> CompleteMap([FromBody] Map_Info_Player mapInfoPlayer)
     {
-        try
-        {
-            Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.player.username);
-            Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfo.id);
-            Map_Info_Player? mip = context.Maps_Info_Player.SingleOrDefault(mip => mip.mapInfo == m && mip.player == p);
+        Console.WriteLine("Hola");
+        return null;
+        // try
+        // {
+        //     Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.player.username);
+        //     Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfo.id);
+        //     Map_Info_Player? mip = context.Maps_Info_Player.SingleOrDefault(mip => mip.mapInfo == m && mip.player == p);
 
-            if (mip != null)
-            {
-                mip.completed = true;
-                // if (mip.time == -1 || mip.time > mapInfoPlayer.time) {
-                //     mip.time = mapInfoPlayer.time;
-                // }
-                mip.time = 999;
-                await context.SaveChangesAsync();
-                Console.WriteLine("[SERVER] CompleteMap was Succesful");
-                return Ok(mip);
-            }
-            else
-            {
-                Console.WriteLine("[SERVER] CompleteMap NotFound");
-                return StatusCode(StatusCodes.Status404NotFound);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("[SERVER] CompleteMap ERROR");
-            return StatusCode(StatusCodes.Status500InternalServerError, e);
-        }
+        //     if (mip != null)
+        //     {
+        //         mip.completed = true;
+        //         if (mip.time == -1 || mip.time > mapInfoPlayer.time) {
+        //             mip.time = mapInfoPlayer.time;
+        //         }
+        //         await context.SaveChangesAsync();
+        //         Console.WriteLine("[SERVER] CompleteMap was Succesful");
+        //         return Ok(mip);
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("[SERVER] CompleteMap NotFound");
+        //         return StatusCode(StatusCodes.Status404NotFound);
+        //     }
+        // }
+        // catch (Exception e)
+        // {
+        //     Console.WriteLine("[SERVER] CompleteMap ERROR");
+        //     return StatusCode(StatusCodes.Status500InternalServerError, e);
+        // }
     }
 
     [HttpPost]
