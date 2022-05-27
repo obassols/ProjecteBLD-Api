@@ -65,21 +65,26 @@ public class MapInfoPlayerController : Controller
     [Route("completeMap")]
     public async Task<ActionResult> CompleteMap([FromBody] Map_Info_Player mapInfoPlayer)
     {
-        Console.WriteLine("Hola");
+        
         try
         {
             Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.player.username);
+            Console.WriteLine("Hola1");
             Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfo.id);
+            Console.WriteLine("Hola2");
             Map_Info_Player? mip = context.Maps_Info_Player.SingleOrDefault(mip => mip.mapInfo == m && mip.player == p);
-
+            Console.WriteLine("Hola3");
             if (mip != null)
             {
+                Console.WriteLine("Hola4");
                 mip.completed = true;
                 // if (mip.time == -1 || mip.time > mapInfoPlayer.time) {
                 //     mip.time = mapInfoPlayer.time;
                 // }
                 mip.time = 999;
+                Console.WriteLine("Hola5");
                 await context.SaveChangesAsync();
+                Console.WriteLine("Hola6");
                 Console.WriteLine("[SERVER] CompleteMap was Succesful");
                 return Ok(mip);
             }
