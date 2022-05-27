@@ -61,7 +61,7 @@ public class MapInfoPlayerController : Controller
 
     [HttpPost]
     [Route("completeMap")]
-    public async Task<ActionResult> ResetMap([FromBody] Map_Info_Player mapInfoPlayer)
+    public async Task<ActionResult> CompleteMap([FromBody] Map_Info_Player mapInfoPlayer)
     {
         try
         {
@@ -75,18 +75,19 @@ public class MapInfoPlayerController : Controller
                 if (mip.time == -1 || mip.time > mapInfoPlayer.time) {
                     mip.time = mapInfoPlayer.time;
                 }
-                context.Maps_Info_Player.Add(mip);
                 await context.SaveChangesAsync();
-                Console.WriteLine("[SERVER] StartMap was Succesful");
+                Console.WriteLine("[SERVER] CompleteMap was Succesful");
                 return Ok(mip);
             }
             else
             {
+                Console.WriteLine("[SERVER] CompleteMap NotFound");
                 return StatusCode(StatusCodes.Status404NotFound);
             }
         }
         catch (Exception e)
         {
+            Console.WriteLine("[SERVER] CompleteMap ERROR");
             return StatusCode(StatusCodes.Status500InternalServerError, e);
         }
     }
