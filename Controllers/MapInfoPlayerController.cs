@@ -75,9 +75,10 @@ public class MapInfoPlayerController : Controller
             if (mip != null)
             {
                 mip.completed = true;
-                if (mip.time == -1 || mip.time > mapInfoPlayer.time) {
-                    mip.time = mapInfoPlayer.time;
-                }
+                // if (mip.time == -1 || mip.time > mapInfoPlayer.time) {
+                //     mip.time = mapInfoPlayer.time;
+                // }
+                mip.time = 999;
                 await context.SaveChangesAsync();
                 Console.WriteLine("[SERVER] CompleteMap was Succesful");
                 return Ok(mip);
