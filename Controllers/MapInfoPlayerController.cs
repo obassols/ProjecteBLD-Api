@@ -69,9 +69,9 @@ public class MapInfoPlayerController : Controller
         try
         {
             Console.WriteLine("Hola0");
-            Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.player.username);
+            Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.playerFK);
             Console.WriteLine("Hola1");
-            Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfo.id);
+            Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfoFK);
             Console.WriteLine("Hola2");
             Map_Info_Player? mip = context.Maps_Info_Player.SingleOrDefault(mip => mip.mapInfo == m && mip.player == p);
             Console.WriteLine("Hola3");
