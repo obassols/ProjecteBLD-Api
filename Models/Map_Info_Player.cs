@@ -13,8 +13,8 @@ namespace ProjecteBLD.Model
         public string mapInfoFK { get; set; }
         public string playerFK { get; set; }
         [JsonIgnore]
-        public virtual Map_Info mapInfo { get; set; }
+        public virtual Map_Info? mapInfo { get; set; }
         [JsonIgnore]
-        public virtual Player player {get; set; }
+        public virtual Player? player {get; set; }
     }
 }
