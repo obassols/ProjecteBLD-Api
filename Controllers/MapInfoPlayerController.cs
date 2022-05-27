@@ -48,9 +48,11 @@ public class MapInfoPlayerController : Controller
                     return Ok(mip);
                 } else {
                     return StatusCode(StatusCodes.Status409Conflict);
+                    Console.WriteLine("[SERVER] StartMap had already started that map");
                 }
             } else {
                 return StatusCode(StatusCodes.Status404NotFound);
+                Console.WriteLine("[SERVER] StartMap map or player not found");
             }
         }
         catch (Exception e)
