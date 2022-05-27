@@ -68,6 +68,7 @@ public class MapInfoPlayerController : Controller
         
         try
         {
+            Console.WriteLine("Hola0");
             Player? p = context.Players.SingleOrDefault(p => p.username == mapInfoPlayer.player.username);
             Console.WriteLine("Hola1");
             Map_Info? m = context.Maps_Info.SingleOrDefault(m => m.id == mapInfoPlayer.mapInfo.id);
