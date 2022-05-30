@@ -26,7 +26,7 @@ public class MapInfoPlayerController : Controller
     }
 
     [HttpGet]
-    [Route("getRankingMap/{{mapFK}}")]
+    [Route("getRankingMap/{mapFK}")]
     public ActionResult GetRankingMap(string mapFK)
     {
         try
