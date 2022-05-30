@@ -25,9 +25,9 @@ public class MapInfoPlayerController : Controller
         }
     }
 
-    [HttpPost]
-    [Route("getRankingMap")]
-    public ActionResult GetRankingMap([FromBody] string mapFK)
+    [HttpGet]
+    [Route("getRankingMap/{{mapFK}}")]
+    public ActionResult GetRankingMap(string mapFK)
     {
         try
         {
