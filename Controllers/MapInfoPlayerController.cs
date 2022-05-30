@@ -26,6 +26,26 @@ public class MapInfoPlayerController : Controller
     }
 
     [HttpPost]
+    [Route("getRankingMap")]
+    public ActionResult GetRankingMap([FromBody] string mapFK)
+    {
+        try
+        {
+            var m = context.Maps_Info.SingleOrDefault(map => map.id == mapFK);
+            if (m != null) {
+                Console.WriteLine("[SERVER] GetRankingMap was Succesful");
+                return Ok(context.Maps_Info_Player.Where(x => x.mapInfoFK == mapFK && x.completed == true).OrderBy(x => x.time).Take(5).ToList());
+            } else {
+                return StatusCode(StatusCodes.Status404NotFound,"Map was not found");
+            }
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e);
+        }
+    }
+
+    [HttpPost]
     [Route("startMap")]
     public async Task<ActionResult> StartMap([FromBody] Map_Info_Player mapInfoPlayer)
     {
