@@ -6,6 +6,7 @@ namespace ProjecteBLD.Model
 {
     public class Ranking
     {
+        public string mapName;
         public List<Map_Info_Player> ranking;
     }
 }
