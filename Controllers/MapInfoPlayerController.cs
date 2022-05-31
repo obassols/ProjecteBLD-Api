@@ -35,7 +35,8 @@ public class MapInfoPlayerController : Controller
             if (m != null) {
                 Ranking r = new Ranking();
                 r.ranking = context.Maps_Info_Player.Where(x => x.mapInfoFK == mapFK && x.completed == true).OrderBy(x => x.time).Take(5).ToList();
-                Console.WriteLine("[SERVER] GetRankingMap was Succesful");
+                Console.WriteLine("[SERVER] GetRankingMap was Succesful: " + mapFK);
+                Console.WriteLine(r.ranking);
                 return Ok(r);
             } else {
                 return StatusCode(StatusCodes.Status404NotFound,"Map was not found");
