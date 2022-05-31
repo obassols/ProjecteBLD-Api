@@ -32,8 +32,8 @@ public class MapInfoPlayerController : Controller
         try
         {
             var m = context.Maps_Info.SingleOrDefault(map => map.id == mapFK);
+            Ranking r = new Ranking();
             if (m != null) {
-                Ranking r = new Ranking();
                 r.mapName = m.id;
                 r.ranking = context.Maps_Info_Player.Where(x => x.mapInfoFK == r.mapName && x.completed == true).OrderBy(x => x.time).Take(5).ToList();
                 Console.WriteLine("[SERVER] GetRankingMap was Succesful: " + r.mapName);
