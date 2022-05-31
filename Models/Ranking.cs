@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace ProjecteBLD.Model
 {
+    [Serializable]
     public class Ranking
     {
         public string mapName;
