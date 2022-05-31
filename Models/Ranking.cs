@@ -7,7 +7,7 @@ namespace ProjecteBLD.Model
     [Serializable]
     public class Ranking
     {
-        public string mapName;
-        public List<Map_Info_Player> ranking;
+        public string mapName { get; set; }
+        public List<Map_Info_Player> ranking { get; set; }
     }
 }
